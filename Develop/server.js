@@ -4,7 +4,7 @@ const app = express();
 
 const PORT = 3001;
 
-const dbFile = require('../db/db.json');
+const dbFile = require('./db/db.json');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -19,25 +19,29 @@ const write = (notes) => {
     fs.writeFileSync(db, jsonData)
 }
 
-app.get('/notes', (req, res) => {
+app.get('/notes.html', (req, res) => {
     const notes = read();
     res.json(notes);
 });
 
-app.get('*', (req, res) => {
-    res.send('<a href="/">Go back home?</a>');
-})
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, '/index.html'));
+});
 
-app.get('/api/notes', (req, res) => {
+app.get('./api/notes', (req, res) => {
     res.json(dbFile);
-})
+});
 
-app.post('../db/db.json', (req, res) => {
+app.post('./db/db.json', (req, res) => {
     const notes = read();
     const newNote = req.body;
     notes.push(newNote);
     write(notes);
     res.json(notes);
+});
+
+app.get('*', (req, res) => {
+    res.send('<a href="/">Go back home?</a>');
 });
 
 /*
