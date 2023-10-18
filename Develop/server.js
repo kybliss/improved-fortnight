@@ -16,7 +16,7 @@ const read = () => {
 
 const write = (notes) => {
     const jsonData = JSON.stringify(notes);
-    fs.writeFileSync(db, jsonData)
+    fs.writeFileSync(dbFile, jsonData)
 }
 
 app.get('/notes.html', (req, res) => {
@@ -41,7 +41,7 @@ app.post('./db/db.json', (req, res) => {
 });
 
 app.get('*', (req, res) => {
-    res.send('<a href="/">Go back home?</a>');
+    res.sendFile(path.join(__dirname, '/index.html'));
 });
 
 /*
