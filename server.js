@@ -4,7 +4,8 @@ const app = express();
 const path = require('path');
 const uuid = require('uuid');
 
-const PORT = 3001;
+require('dotenv').config();
+const PORT = process.env.PORT || 3001;
 
 const db = require('./db/db.json');
 // const index = require('./public/assets/js/index.js');
