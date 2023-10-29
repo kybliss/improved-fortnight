@@ -11,4 +11,4 @@ The backend was written by me, Kyle Oros, with the assistance of an edX bootcamp
 # Links
 
 GitHub: https://github.com/kybliss/improved-fortnight
-Heroku: https://kyblissnotetaker-fe9e46da2ac2.herokuapp.com/notes
+Heroku: https://kyblissnotetaker-fe9e46da2ac2.herokuapp.com/
